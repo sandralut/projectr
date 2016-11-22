@@ -51,6 +51,14 @@ img {
   margin: 1px 1px 1px 1px;
 }
 
+.block2{
+  display: inline-block;
+  background: #20B2AA;
+  width: 33%;
+  height: 250px;
+  margin: 1px 1px 1px 1px;
+}
+
 .footer{
   background: #C1C9C8; 
   height: 50px;
