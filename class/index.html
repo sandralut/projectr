@@ -1,0 +1,63 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="./style/indexStyle.css">
+  <script async src="./jsFiles/indexJS.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script type="text/javascript" src="http://sandralut.github.io/testProjest/test.js"></script>
+  <title>暢銷書分析</title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="nav-bar">
+      <ul>
+        <div class="time" id="clock"></div>
+        <li><a href="">HOME</a></li>
+        <li><a href="">ABOUT ME</a></li>
+        <li><a href="">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="genpic">      
+  <img src="./images/image01.jpg" alt="博客來歷年營收消長變化（圖）">
+
+</div>
+  <div class="block-box">
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+  </div>
+
+  <script type="text/javascript">  
+    var svgContainer = d3.select("body").append("svg").attr("width", 500)
+                .attr("height", 500);
+    svgContainer.append("circle").attr("cx", 120).attr("cy", 80).attr("r", 40).attr("fill", "yellow");
+    svgContainer.append("circle").attr("cx", 280).attr("cy", 80).attr("r", 40).attr("fill", "yellow");
+    svgContainer.append("ellipse").attr("cx", 200).attr("cy", 130).attr("rx", 100).attr("ry", 80).attr("fill", "yellow");
+    svgContainer.append("circle").attr("cx", 160).attr("cy", 120).attr("r", 12).attr("fill", "brown");
+    svgContainer.append("circle").attr("cx", 240).attr("cy", 120).attr("r", 12).attr("fill", "brown");
+    
+  </script>
+
+<svg width="500" height="500">
+  <circle cx="120" cy="80" r="40" fill="yellow" />
+  <circle cx="280" cy="80" r="40" fill="yellow" />
+  <ellipse cx="200" cy="130" rx="100" ry="80"
+  style="fill:yellow" />
+  <circle cx="160" cy="120" r="12" fill="brown" />
+  <circle cx="240" cy="120" r="12" fill="brown" />
+  <polyline points="155,150 200,175 245,150"
+  style="fill:red" />
+
+</svg>
+<script type="text/javascript">
+  test();
+</script> 
+
+
+  <div class="footer"></div>
+
+</body>
+</html>
