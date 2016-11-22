@@ -7,13 +7,26 @@ function test(){
 	d3.csv("https://pecu.github.io/D3/HistoricalQuotes.csv", 
 		function(data)
 		{
-			var svgContainer = d3.select("body").append("svg").attr("width", 500)
-                .attr("height", 500);
-    svgContainer.append("circle").attr("cx", 120).attr("cy", 80).attr("r", 40).attr("fill", "yellow");
-    svgContainer.append("circle").attr("cx", 280).attr("cy", 80).attr("r", 40).attr("fill", "yellow");
-    svgContainer.append("ellipse").attr("cx", 200).attr("cy", 130).attr("rx", 100).attr("ry", 80).attr("fill", "yellow");
-    svgContainer.append("circle").attr("cx", 160).attr("cy", 120).attr("r", 12).attr("fill", "brown");
-    svgContainer.append("circle").attr("cx", 240).attr("cy", 120).attr("r", 12).attr("fill", "brown");
+			var ln = data.length;
+			console.log(data);
+			var maxy = d3.max(data, function(d){ return d.close; });
+			var lines = d3.line().x(function(d,i){return i*(width/ln);}).y(function(d){return height-d.close*(height/maxy)});
+			ctrl.append("path").attr("d", function(d){
+				return "M0,"+height+"L"+width+","+height;
+			}).attr("stroke", "black").attr("fill", "none");
+			ctrl.append("path").attr("d", function(d){
+				return "M0,0"+"L0,"+height;
+			}).attr("stroke", "black").attr("fill", "none");
+			ctrl.append("path").data([data]).attr("d", lines).attr("stroke", "red").attr("fill", "none");
+			var x = d3.scaleTime().range([0, width]);
+			var y = d3.scaleLinear().range([height, 0]);	
+			x.domain(d3.extent(data, function(d) { return d.date; }));
+			y.domain([0, maxy]);
+			ctrl.append("g")
+	      	.attr("transform", "translate(0," + height + ")")
+	      	.call(d3.axisBottom(x));
+	  		ctrl.append("g")
+	      	.call(d3.axisLeft(y));
 		}
 	);
 }
